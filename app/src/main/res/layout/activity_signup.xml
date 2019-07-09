@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signinBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
+    android:fitsSystemWindows="true">
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/et_bg"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/email"
+        android:padding="16dp"
+        android:textColor="@color/login_form_details"
+        android:textColorHighlight="@color/login_form_details"
+        android:textColorHint="@color/login_form_details"
+        android:textCursorDrawable="@color/login_form_details"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/igCaption" />
+
+    <ImageView
+        android:id="@+id/instagramLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="85dp"
+        android:layout_marginTop="80dp"
+        android:contentDescription="logo"
+        android:src="@drawable/ic_instagram_logo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/et_bg"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/login_form_details"
+        android:textColorHint="@color/login_form_details"
+        android:textColorLink="@color/login_form_details"
+        android:textCursorDrawable="@color/login_form_details"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
+
+    <TextView
+        android:id="@+id/igCaption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:inputType="none"
+        android:padding="16dp"
+        android:text="Sign up to see photos and videos from your friends."
+        android:textAlignment="center"
+        android:textColor="@color/login_form_details"
+        android:textColorHighlight="@color/login_form_details"
+        android:textColorHint="@color/login_form_details"
+        android:textCursorDrawable="@color/login_form_details"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/instagramLogo" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <EditText
+        android:id="@+id/usernameInput"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/et_bg"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/username"
+        android:inputType="none"
+        android:padding="16dp"
+        android:textColor="@color/login_form_details"
+        android:textColorHighlight="@color/login_form_details"
+        android:textColorHint="@color/login_form_details"
+        android:textCursorDrawable="@color/login_form_details"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+
+    <EditText
+        android:id="@+id/passwordConfirmInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/et_bg"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/login_form_details"
+        android:textColorHint="@color/login_form_details"
+        android:textColorLink="@color/login_form_details"
+        android:textCursorDrawable="@color/login_form_details"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+    <Button
+        android:id="@+id/signupBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_bg"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/login_form_details_medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/passwordConfirmInput" />
+
+    <TextView
+        android:id="@+id/accountExist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/already_have_an_account"
+        android:textColor="@color/login_form_details"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/signupBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/signinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/sign_in"
+        android:textColor="@color/login_form_details"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/accountExist"
+        app:layout_constraintTop_toBottomOf="@id/signupBtn" />
+
+</android.support.constraint.ConstraintLayout>

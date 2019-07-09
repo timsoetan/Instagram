@@ -1,6 +1,7 @@
 package com.example.instagram.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.instagram.R;
 import com.parse.LogInCallback;
@@ -25,7 +27,10 @@ public class LoginActivity extends AppCompatActivity {
     // Login info
     private EditText usernameInput;
     private EditText passwordInput;
+    private TextView signupText;
     private Button loginBtn;
+
+    private static Activity loginActivty;
 
     private Boolean passwordShown;
 
@@ -35,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        loginActivty = this;
 
         // Create animated gradient background
         ConstraintLayout constraintLayout = findViewById(R.id.loginBackground);
@@ -46,7 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         // Find references for the views
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
-        loginBtn = findViewById(R.id.loginBtn);
+        signupText =findViewById(R.id.signupText);
+        loginBtn = findViewById(R.id.signupBtn);
 
         // Set up listener for username/password input
         usernameInput.addTextChangedListener(loginAvailable);
@@ -65,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Initially disable button
         loginBtn.setEnabled(false);
+        loginBtn.setAlpha((float ) 0.5);
 
         // Default password not shown
         passwordShown = false;
@@ -89,6 +97,15 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 return false;
+            }
+        });
+
+        // Set up listener for sign up
+        signupText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -123,11 +140,13 @@ public class LoginActivity extends AppCompatActivity {
             if (usernameInput.getText().toString().trim().length() > 0 &&
                     passwordInput.getText().toString().trim().length() > 0) {
                 loginBtn.setEnabled(true);
-                loginBtn.setBackground(getDrawable(R.color.login_blue));
+                loginBtn.setBackground(getDrawable(R.drawable.btn_bg));
+                loginBtn.setAlpha((float ) 1);
                 loginBtn.setTextColor(getColor(R.color.login_form_details));
             } else {
                 loginBtn.setEnabled(false);
                 loginBtn.setBackground(getDrawable(R.drawable.btn_bg));
+                loginBtn.setAlpha((float ) 0.5);
                 loginBtn.setTextColor(getColor(R.color.login_form_details_medium));
             }
         }
@@ -137,5 +156,9 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     };
+
+    public static Activity getLoginActivty() {
+        return loginActivty;
+    }
 }
 
