@@ -25,10 +25,10 @@ import com.parse.ParseUser;
 public class LoginActivity extends AppCompatActivity {
 
     // Login info
-    private EditText usernameInput;
-    private EditText passwordInput;
-    private TextView signupText;
-    private Button loginBtn;
+    private EditText etUsernameInput;
+    private EditText etPasswordInput;
+    private TextView tvSignUp;
+    private Button btnLogIn;
 
     private static Activity loginActivty;
 
@@ -42,72 +42,81 @@ public class LoginActivity extends AppCompatActivity {
 
         loginActivty = this;
 
-        // Create animated gradient background
-        ConstraintLayout constraintLayout = findViewById(R.id.loginBackground);
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2000);
-        animationDrawable.setExitFadeDuration(4000);
-        animationDrawable.start();
+        // Check if a user is currently logged in
+        ParseUser currentUser = ParseUser.getCurrentUser();
 
-        // Find references for the views
-        usernameInput = findViewById(R.id.usernameInput);
-        passwordInput = findViewById(R.id.passwordInput);
-        signupText =findViewById(R.id.signupText);
-        loginBtn = findViewById(R.id.signupBtn);
+        if (currentUser != null) {
+            // Send user to home page
+            launchHomeActivity();
+        } else {
 
-        // Set up listener for username/password input
-        usernameInput.addTextChangedListener(loginAvailable);
-        passwordInput.addTextChangedListener(loginAvailable);
+            // Create animated gradient background
+            ConstraintLayout constraintLayout = findViewById(R.id.loginBackground);
+            AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+            animationDrawable.setEnterFadeDuration(2000);
+            animationDrawable.setExitFadeDuration(4000);
+            animationDrawable.start();
 
-        // Set up listener for login button
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String username = usernameInput.getText().toString();
-                final String password = passwordInput.getText().toString();
+            // Find references for the views
+            etUsernameInput = findViewById(R.id.etUsernameInput);
+            etPasswordInput = findViewById(R.id.etPasswordInput);
+            tvSignUp = findViewById(R.id.tvSignUp);
+            btnLogIn = findViewById(R.id.btnLogIn);
 
-                login(username, password);
-            }
-        });
+            // Set up listener for username/password input
+            etUsernameInput.addTextChangedListener(loginAvailable);
+            etPasswordInput.addTextChangedListener(loginAvailable);
 
-        // Initially disable button
-        loginBtn.setEnabled(false);
-        loginBtn.setAlpha((float ) 0.5);
+            // Set up listener for login button
+            btnLogIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String username = etUsernameInput.getText().toString();
+                    final String password = etPasswordInput.getText().toString();
 
-        // Default password not shown
-        passwordShown = false;
-
-        // Set up listener for password input
-        passwordInput.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                final int DRAWABLE_RIGHT = 2;
-
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (event.getRawX() >= (passwordInput.getRight() - passwordInput.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        if (passwordShown) {
-                            passwordShown = false;
-                            passwordInput.setInputType(129);
-                            passwordInput.setTypeface(usernameInput.getTypeface());
-                        } else {
-                            passwordShown = true;
-                            passwordInput.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                        }
-                        return true;
-                    }
+                    login(username, password);
                 }
-                return false;
-            }
-        });
+            });
 
-        // Set up listener for sign up
-        signupText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
-        });
+            // Initially disable button
+            btnLogIn.setEnabled(false);
+            btnLogIn.setAlpha((float) 0.5);
+
+            // Default password not shown
+            passwordShown = false;
+
+            // Set up listener for password input
+            etPasswordInput.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    final int DRAWABLE_RIGHT = 2;
+
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        if (event.getRawX() >= (etPasswordInput.getRight() - etPasswordInput.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                            if (passwordShown) {
+                                passwordShown = false;
+                                etPasswordInput.setInputType(129);
+                                etPasswordInput.setTypeface(etUsernameInput.getTypeface());
+                            } else {
+                                passwordShown = true;
+                                etPasswordInput.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            }
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            });
+
+            // Set up listener for sign up
+            tvSignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void login(String username, String password) {
@@ -137,17 +146,17 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (usernameInput.getText().toString().trim().length() > 0 &&
-                    passwordInput.getText().toString().trim().length() > 0) {
-                loginBtn.setEnabled(true);
-                loginBtn.setBackground(getDrawable(R.drawable.btn_bg));
-                loginBtn.setAlpha((float ) 1);
-                loginBtn.setTextColor(getColor(R.color.login_form_details));
+            if (etUsernameInput.getText().toString().trim().length() > 0 &&
+                    etPasswordInput.getText().toString().trim().length() > 0) {
+                btnLogIn.setEnabled(true);
+                btnLogIn.setBackground(getDrawable(R.drawable.btn_bg));
+                btnLogIn.setAlpha((float) 1);
+                btnLogIn.setTextColor(getColor(R.color.login_form_details));
             } else {
-                loginBtn.setEnabled(false);
-                loginBtn.setBackground(getDrawable(R.drawable.btn_bg));
-                loginBtn.setAlpha((float ) 0.5);
-                loginBtn.setTextColor(getColor(R.color.login_form_details_medium));
+                btnLogIn.setEnabled(false);
+                btnLogIn.setBackground(getDrawable(R.drawable.btn_bg));
+                btnLogIn.setAlpha((float) 0.5);
+                btnLogIn.setTextColor(getColor(R.color.login_form_details_medium));
             }
         }
 
@@ -159,6 +168,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public static Activity getLoginActivty() {
         return loginActivty;
+    }
+
+    // Launch HomeActivity.
+    private void launchHomeActivity() {
+        final Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
 

@@ -23,12 +23,12 @@ import com.parse.SignUpCallback;
 public class SignupActivity extends AppCompatActivity {
 
     // Signup info
-    private EditText emailInput;
-    private EditText usernameInput;
-    private EditText passwordInput;
-    private EditText passwordConfirmInput;
-    private Button signupBtn;
-    private TextView signinBtn;
+    private EditText etEmailInput;
+    private EditText etUsernameInput;
+    private EditText etPasswordInput;
+    private EditText etConfirmPasswordInput;
+    private Button btnSignIn;
+    private TextView tvSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,25 +43,25 @@ public class SignupActivity extends AppCompatActivity {
         animationDrawable.start();
 
         // Find references for the views
-        emailInput = findViewById(R.id.emailInput);
-        usernameInput = findViewById(R.id.usernameInput);
-        passwordInput = findViewById(R.id.passwordInput);
-        passwordConfirmInput = findViewById(R.id.passwordConfirmInput);
-        signupBtn = findViewById(R.id.signupBtn);
-        signinBtn = findViewById(R.id.signinBtn);
+        etEmailInput = findViewById(R.id.etEmailInput);
+        etUsernameInput = findViewById(R.id.etUsernameInput);
+        etPasswordInput = findViewById(R.id.etPasswordInput);
+        etConfirmPasswordInput = findViewById(R.id.etConfirmPasswordInput);
+        btnSignIn = findViewById(R.id.btnLogIn);
+        tvSignIn = findViewById(R.id.btnSignIn);
 
         // Initially disable button
-        signupBtn.setEnabled(false);
-        signupBtn.setAlpha((float ) 0.5);
+        btnSignIn.setEnabled(false);
+        btnSignIn.setAlpha((float ) 0.5);
 
         // Set up listener for username/password input
-        emailInput.addTextChangedListener(signupAvailable);
-        usernameInput.addTextChangedListener(signupAvailable);
-        passwordInput.addTextChangedListener(signupAvailable);
-        passwordConfirmInput.addTextChangedListener(signupAvailable);
+        etEmailInput.addTextChangedListener(signupAvailable);
+        etUsernameInput.addTextChangedListener(signupAvailable);
+        etPasswordInput.addTextChangedListener(signupAvailable);
+        etConfirmPasswordInput.addTextChangedListener(signupAvailable);
 
         // Set up listener for sign in button
-        signinBtn.setOnClickListener(new View.OnClickListener() {
+        tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
@@ -71,13 +71,13 @@ public class SignupActivity extends AppCompatActivity {
         });
 
         // Set up listener for signup button
-        signupBtn.setOnClickListener(new View.OnClickListener() {
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = emailInput.getText().toString();
-                final String username = usernameInput.getText().toString();
-                final String password = passwordInput.getText().toString();
-                final String passwordConfirm = passwordConfirmInput.getText().toString();
+                final String email = etEmailInput.getText().toString();
+                final String username = etUsernameInput.getText().toString();
+                final String password = etPasswordInput.getText().toString();
+                final String passwordConfirm = etConfirmPasswordInput.getText().toString();
 
                 // Check that password and password confirmation inputs are the same
                 if (password.compareTo(passwordConfirm) == 0) {
@@ -140,19 +140,19 @@ public class SignupActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (emailInput.getText().toString().trim().length() > 0 &&
-                    usernameInput.getText().toString().trim().length() > 0 &&
-                    passwordInput.getText().toString().trim().length() > 0 &&
-                    passwordConfirmInput.getText().toString().trim().length() > 0) {
-                signupBtn.setEnabled(true);
-                signupBtn.setBackground(getDrawable(R.drawable.btn_bg));
-                signupBtn.setAlpha((float ) 1);
-                signupBtn.setTextColor(getColor(R.color.login_form_details));
+            if (etEmailInput.getText().toString().trim().length() > 0 &&
+                    etUsernameInput.getText().toString().trim().length() > 0 &&
+                    etPasswordInput.getText().toString().trim().length() > 0 &&
+                    etConfirmPasswordInput.getText().toString().trim().length() > 0) {
+                btnSignIn.setEnabled(true);
+                btnSignIn.setBackground(getDrawable(R.drawable.btn_bg));
+                btnSignIn.setAlpha((float ) 1);
+                btnSignIn.setTextColor(getColor(R.color.login_form_details));
             } else {
-                signupBtn.setEnabled(false);
-                signupBtn.setBackground(getDrawable(R.drawable.btn_bg));
-                signupBtn.setAlpha((float ) 0.5);
-                signupBtn.setTextColor(getColor(R.color.login_form_details_medium));
+                btnSignIn.setEnabled(false);
+                btnSignIn.setBackground(getDrawable(R.drawable.btn_bg));
+                btnSignIn.setAlpha((float ) 0.5);
+                btnSignIn.setTextColor(getColor(R.color.login_form_details_medium));
             }
         }
 

@@ -10,7 +10,11 @@
     <color name="ig_gradient_2">#7E2FB6</color>
     <color name="ig_gradient_3">#359CFB</color>
     <color name="ig_gradient_4">#546BF5</color>
+    <color name="ig_gradient_5">#FD2A5E</color>
+    <color name="ig_gradient_6">#FE9011</color>
 
+    <color name="ig_status_bar">#1C2938</color>
+    <color name="ig_status_bar2">#15202B</color>
     <color name="login_blue">#3897F1</color>
     <color name="login_form_details">#CCFFFFFF</color>
     <color name="login_form_details_light">#1affffff</color>

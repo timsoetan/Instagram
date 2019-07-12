@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true">
 
     <EditText
-        android:id="@+id/emailInput"
+        android:id="@+id/etEmailInput"
         android:layout_width="0dp"
         android:layout_height="62dp"
         android:layout_marginTop="16dp"
@@ -25,10 +25,10 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/igCaption" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIGCaption" />
 
     <ImageView
-        android:id="@+id/instagramLogo"
+        android:id="@+id/ivInstagramLogo"
         android:layout_width="wrap_content"
         android:layout_height="85dp"
         android:layout_marginTop="80dp"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/passwordInput"
+        android:id="@+id/etPasswordInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -54,10 +54,10 @@
         android:textCursorDrawable="@color/login_form_details"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsernameInput" />
 
     <TextView
-        android:id="@+id/igCaption"
+        android:id="@+id/tvIGCaption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/instagramLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/ivInstagramLogo" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_left"
@@ -90,7 +90,7 @@
         app:layout_constraintGuide_end="24dp" />
 
     <EditText
-        android:id="@+id/usernameInput"
+        android:id="@+id/etUsernameInput"
         android:layout_width="0dp"
         android:layout_height="62dp"
         android:layout_marginTop="16dp"
@@ -105,10 +105,10 @@
         android:textCursorDrawable="@color/login_form_details"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmailInput" />
 
     <EditText
-        android:id="@+id/passwordConfirmInput"
+        android:id="@+id/etConfirmPasswordInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -124,10 +124,10 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordInput" />
 
     <Button
-        android:id="@+id/signupBtn"
+        android:id="@+id/btnLogIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -138,10 +138,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/passwordConfirmInput" />
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPasswordInput" />
 
     <TextView
-        android:id="@+id/accountExist"
+        android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -153,11 +153,11 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/signupBtn"
+        app:layout_constraintTop_toBottomOf="@id/btnLogIn"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/signinBtn"
+        android:id="@+id/btnSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -171,7 +171,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/accountExist"
-        app:layout_constraintTop_toBottomOf="@id/signupBtn" />
+        app:layout_constraintStart_toEndOf="@+id/tvForgotPassword"
+        app:layout_constraintTop_toBottomOf="@id/btnLogIn" />
 
 </android.support.constraint.ConstraintLayout>
