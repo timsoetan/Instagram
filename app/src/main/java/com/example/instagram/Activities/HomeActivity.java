@@ -72,27 +72,21 @@ public class HomeActivity extends AppCompatActivity {
                         switch (menuItem.getItemId()) {
                             case R.id.navHome:
                                 fragment = new TimelineFragment();
-                                fragmentTransaction.addToBackStack("post");
                                 break;
                             case R.id.navSearch:
                                 fragment = new EmptyFragment();
-                                fragmentTransaction.addToBackStack("post");
                                 break;
                             case R.id.navPost:
                                 fragment = new PostFragment();
-                                fragmentTransaction.addToBackStack("post");
                                 break;
                             case R.id.navHeart:
                                 fragment = new EmptyFragment();
-                                fragmentTransaction.addToBackStack("post");
                                 break;
                             case R.id.navUser:
-                                fragment = new PostFragment();
-                                fragmentTransaction.addToBackStack("post");
+                                fragment = new EmptyFragment();
                                 break;
                             default:
                                 fragment = new TimelineFragment();
-                                fragmentTransaction.addToBackStack("post");
                                 break;
                         }
                         fragmentManager.beginTransaction().replace(R.id.centerView, fragment).commit();

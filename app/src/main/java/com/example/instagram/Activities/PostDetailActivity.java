@@ -112,8 +112,61 @@ public class PostDetailActivity extends AppCompatActivity {
                 } else {
                     e.printStackTrace();
                 }
+
+                updateLikes(post);
+                toggleLike(ivLike, post.isLiked());
+
+                ivLike.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean liked = post.isLiked();
+
+                        if (!liked) {
+                            post.likePost(ParseUser.getCurrentUser());
+                            updateLikes(post);
+                            toggleLike(ivLike, post.isLiked());
+                        } else {
+                            post.unlikePost(ParseUser.getCurrentUser());
+                            updateLikes(post);
+                            toggleLike(ivLike, post.isLiked());
+                        }
+                        post.saveInBackground();
+                    }
+                });
             }
         });
+    }
+
+
+    private void toggleLike(ImageView image, boolean liked) {
+        if (liked) {
+            image.setBackgroundResource(R.drawable.ic_heart_red);
+        } else {
+            image.setBackgroundResource(R.drawable.ic_heart_stroke);
+        }
+    }
+
+    private void updateLikes(Post post) {
+        Long numLikes = (long) post.getNumLikes();
+
+        if (numLikes == 0L) {
+            tvLikesCount.setVisibility(GONE);
+            tvLikes.setVisibility(GONE);
+        }
+
+        if (numLikes == 1L) {
+            tvLikesCount.setVisibility(View.VISIBLE);
+            tvLikes.setVisibility(View.VISIBLE);
+            tvLikes.setText("like");
+            tvLikesCount.setText(String.valueOf(numLikes));
+        }
+
+        if (numLikes > 1L) {
+            tvLikesCount.setVisibility(View.VISIBLE);
+            tvLikes.setVisibility(View.VISIBLE);
+            tvLikes.setText("likes");
+            tvLikesCount.setText(String.valueOf(numLikes));
+        }
     }
 }
 

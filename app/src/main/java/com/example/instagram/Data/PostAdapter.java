@@ -69,7 +69,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
     }
 
-    public void updateLikes(ViewHolder holder, int position, Long numLikes) {
+    private void updateLikes(ViewHolder holder, int position, Long numLikes) {
         Post post = posts.get(position);
 
         if (numLikes == 0L) {

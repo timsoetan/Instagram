@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.instagram.Activities.HomeActivity;
 import com.example.instagram.Model.Post;
 import com.example.instagram.R;
 import com.parse.ParseException;
@@ -79,6 +80,9 @@ public class PostFragment extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
 
